@@ -16,6 +16,13 @@ public class Fibonacci {
         }   
         return dp[n];
     }
+    /**
+     * Calculates the nth Fibonacci number with optimized space.
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     * @param n The index of Fibonacci sequence
+     * @return The nth Fibonacci number
+     */
     public static int fibOptimized(int n) {
         if (n <= 1) return n;
         int prev = 0, curr = 1;
