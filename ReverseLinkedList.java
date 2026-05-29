@@ -21,6 +21,22 @@ public class ReverseLinkedList {
         }
         return newHead;
     }
+    /**
+     * Reverses a singly linked list recursively.
+     * Time Complexity: O(n)
+     * Space Complexity: O(n) due to call stack recursion depth
+     * @param head The head node of the linked list
+     * @return The new head node of the reversed list
+     */
+    static Node reverseRecursive(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        Node newHead = reverseRecursive(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
+    }
     static void print(Node head) {
         Node t = head;
         while (t != null) {
