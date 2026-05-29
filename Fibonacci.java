@@ -1,4 +1,11 @@
 public class Fibonacci {
+    /**
+     * Calculates the nth Fibonacci number using Dynamic Programming.
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     * @param n The index of Fibonacci sequence
+     * @return The nth Fibonacci number
+     */
     public static int fibDP(int n) {
         if (n <= 1) return n;
         int[] dp = new int[n + 1];
