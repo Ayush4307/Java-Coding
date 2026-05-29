@@ -7,3 +7,10 @@ A collection of efficient Java implementations for popular algorithmic and data 
 - **Equilibrium Index**: Linear time algorithm to find equilibrium points in arrays.
 - **Fibonacci**: Dynamic Programming (DP) and space-optimized Fibonacci solutions.
 - **Reverse Linked List**: Iterative and recursive linked list reversal.
+
+## Usage
+Compile and run any Java file:
+```bash
+javac FileName.java
+java FileName
+```
