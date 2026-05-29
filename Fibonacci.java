@@ -50,6 +50,8 @@ public class Fibonacci {
         System.out.println("F(" + n + ") = " + fibDP(n));
         System.out.println("\nUsing optimized space:");
         System.out.println("F(" + n + ") = " + fibOptimized(n));
+        System.out.println("\nUsing recursion:");
+        System.out.println("F(" + n + ") = " + fibRecursive(n));
         System.out.println("\nFirst 10 Fibonacci numbers:");
         for (int i = 0; i < 10; i++) {
             System.out.print(fibDP(i) + " ");
