@@ -1,3 +1,6 @@
+/**
+ * EqulibriumIndex contains utility methods to find equilibrium points in arrays.
+ */
 public class EqulibriumIndex {
     /**
      * Finds the equilibrium index of an array.
