@@ -68,5 +68,6 @@ public class Fibonacci {
         for (int i = 0; i < 10; i++) {
             System.out.print(fibDP(i) + " ");
         }
+        System.out.println();
     }
 }
