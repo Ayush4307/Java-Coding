@@ -52,6 +52,8 @@ public class Fibonacci {
         System.out.println("F(" + n + ") = " + fibOptimized(n));
         System.out.println("\nUsing recursion:");
         System.out.println("F(" + n + ") = " + fibRecursive(n));
+        // Note: fibRecursive has exponential time complexity O(2^n)
+        // whereas fibDP and fibOptimized have linear time complexity O(n).
         System.out.println("\nFirst 10 Fibonacci numbers:");
         for (int i = 0; i < 10; i++) {
             System.out.print(fibDP(i) + " ");
