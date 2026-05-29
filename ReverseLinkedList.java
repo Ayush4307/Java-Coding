@@ -59,5 +59,9 @@ public class ReverseLinkedList {
         head = reverse(head);
         System.out.println("Reversed List:");
         print(head);
+
+        System.out.println("\nReversing back with recursion:");
+        head = reverseRecursive(head);
+        print(head);
     }
 }
