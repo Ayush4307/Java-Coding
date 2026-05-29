@@ -1,16 +1,8 @@
-//AYUSH SINGH PAWAR
 class Node {
     int data;
     Node next;
 }
 public class ReverseLinkedList {
-    /**
-     * Reverses a singly linked list iteratively in-place.
-     * Time Complexity: O(n)
-     * Space Complexity: O(1)
-     * @param head The head node of the linked list
-     * @return The new head node of the reversed list
-     */
     static Node reverse(Node head) {
         if (head == null || head.next == null) return head;
         Node newHead = null;
@@ -22,13 +14,6 @@ public class ReverseLinkedList {
         }
         return newHead;
     }
-    /**
-     * Reverses a singly linked list recursively.
-     * Time Complexity: O(n)
-     * Space Complexity: O(n) due to call stack recursion depth
-     * @param head The head node of the linked list
-     * @return The new head node of the reversed list
-     */
     static Node reverseRecursive(Node head) {
         if (head == null || head.next == null) {
             return head;

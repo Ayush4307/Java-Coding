@@ -1,11 +1,4 @@
 public class Fibonacci {
-    /**
-     * Calculates the nth Fibonacci number using Dynamic Programming.
-     * Time Complexity: O(n)
-     * Space Complexity: O(n)
-     * @param n The index of Fibonacci sequence
-     * @return The nth Fibonacci number
-     */
     public static int fibDP(int n) {
         if (n < 0) return -1;
         if (n <= 1) return n;
@@ -18,13 +11,6 @@ public class Fibonacci {
         return dp[n];
     }
 
-    /**
-     * Calculates the nth Fibonacci number with optimized space.
-     * Time Complexity: O(n)
-     * Space Complexity: O(1)
-     * @param n The index of Fibonacci sequence
-     * @return The nth Fibonacci number
-     */
     public static int fibOptimized(int n) {
         if (n < 0) return -1;
         if (n <= 1) return n;
@@ -37,13 +23,6 @@ public class Fibonacci {
         return curr;
     }
 
-    /**
-     * Calculates the nth Fibonacci number recursively with memoization.
-     * Time Complexity: O(n)
-     * Space Complexity: O(n)
-     * @param n The index of Fibonacci sequence
-     * @return The nth Fibonacci number
-     */
     public static int fibRecursiveMemoized(int n) {
         if (n < 0) return -1;
         int[] memo = new int[n + 1];
@@ -58,13 +37,6 @@ public class Fibonacci {
         return memo[n];
     }
 
-    /**
-     * Calculates the nth Fibonacci number in logarithmic time using Fast Doubling.
-     * Time Complexity: O(log n)
-     * Space Complexity: O(log n) due to call stack recursion
-     * @param n The index of Fibonacci sequence
-     * @return The nth Fibonacci number
-     */
     public static int fibFastDoubling(int n) {
         if (n < 0) return -1;
         return fastDoublingHelper(n)[0];

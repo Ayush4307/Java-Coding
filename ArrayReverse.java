@@ -1,13 +1,4 @@
-/**
- * ArrayReverse contains utility methods for reversing arrays in-place.
- */
 public class ArrayReverse {
-    /**
-     * Reverses an array of integers in-place.
-     * Time Complexity: O(n)
-     * Space Complexity: O(1)
-     * @param arr The array to be reversed
-     */
     public static void reverseArray(int[] arr) {
         if (arr == null || arr.length <= 1) return;
         int start = 0;
