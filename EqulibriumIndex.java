@@ -32,5 +32,8 @@ public class EqulibriumIndex {
 
         int[] arr2 = {1, 2, 3};
         System.out.println("Equilibrium Index (no equilibrium): " + findEquilibrium(arr2));
+
+        int[] arr3 = {5};
+        System.out.println("Equilibrium Index (single element): " + findEquilibrium(arr3));
     }
 }
