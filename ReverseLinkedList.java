@@ -12,6 +12,7 @@ public class ReverseLinkedList {
      * @return The new head node of the reversed list
      */
     static Node reverse(Node head) {
+        if (head == null || head.next == null) return head;
         Node newHead = null;
         while (head != null) {
             Node temp = head;

@@ -9,6 +9,7 @@ public class ArrayReverse {
      * @param arr The array to be reversed
      */
     public static void reverseArray(int[] arr) {
+        if (arr == null || arr.length <= 1) return;
         int start = 0;
         int end = arr.length - 1;
         while (start < end) {
