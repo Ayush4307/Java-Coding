@@ -33,6 +33,17 @@ public class Fibonacci {
         }
         return curr;
     }
+    /**
+     * Calculates the nth Fibonacci number recursively.
+     * Time Complexity: O(2^n)
+     * Space Complexity: O(n) due to call stack recursion depth
+     * @param n The index of Fibonacci sequence
+     * @return The nth Fibonacci number
+     */
+    public static int fibRecursive(int n) {
+        if (n <= 1) return n;
+        return fibRecursive(n - 1) + fibRecursive(n - 2);
+    }
     public static void main(String[] args) {
         int n = 10;   
         System.out.println("Using DP array:");
