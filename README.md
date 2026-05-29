@@ -1,16 +1,9 @@
 # Java-Coding
 
-A collection of efficient Java implementations for popular algorithmic and data structure problems.
+A collection of basic Java programs focusing on algorithms and data structures.
 
-## Features
-- **Array Reverse**: In-place reversal of integer arrays.
-- **Equilibrium Index**: Linear time algorithm to find equilibrium points in arrays.
-- **Fibonacci**: Dynamic Programming (DP) and space-optimized Fibonacci solutions.
-- **Reverse Linked List**: Iterative and recursive linked list reversal.
-
-## Usage
-Compile and run any Java file:
-```bash
-javac FileName.java
-java FileName
-```
+## Programs Included
+- Array reversal
+- Equilibrium index search
+- Fibonacci generator
+- Singly linked list reversal
