@@ -29,5 +29,10 @@ public class ArrayReverse {
         System.out.println("\nOriginal array (even elements): " + java.util.Arrays.toString(arr2));
         reverseArray(arr2);
         System.out.println("Reversed array: " + java.util.Arrays.toString(arr2));
+
+        int[] arr3 = {42};
+        System.out.println("\nOriginal array (single element): " + java.util.Arrays.toString(arr3));
+        reverseArray(arr3);
+        System.out.println("Reversed array: " + java.util.Arrays.toString(arr3));
     }
 }
