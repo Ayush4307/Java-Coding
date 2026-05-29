@@ -30,10 +30,12 @@ public class ReverseLinkedList {
      * @return The new head node of the reversed list
      */
     static Node reverseRecursive(Node head) {
+        // Base case: if list is empty or has only one node
         if (head == null || head.next == null) {
             return head;
         }
         Node newHead = reverseRecursive(head.next);
+        // Put current node at the end of reversed list
         head.next.next = head;
         head.next = null;
         return newHead;
