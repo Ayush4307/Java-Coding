@@ -4,6 +4,13 @@ class Node {
     Node next;
 }
 public class ReverseLinkedList {
+    /**
+     * Reverses a singly linked list iteratively in-place.
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     * @param head The head node of the linked list
+     * @return The new head node of the reversed list
+     */
     static Node reverse(Node head) {
         Node newHead = null;
         while (head != null) {
