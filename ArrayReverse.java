@@ -34,5 +34,10 @@ public class ArrayReverse {
         System.out.println("\nOriginal array (single element): " + java.util.Arrays.toString(arr3));
         reverseArray(arr3);
         System.out.println("Reversed array: " + java.util.Arrays.toString(arr3));
+
+        int[] arr4 = {};
+        System.out.println("\nOriginal array (empty): " + java.util.Arrays.toString(arr4));
+        reverseArray(arr4);
+        System.out.println("Reversed array: " + java.util.Arrays.toString(arr4));
     }
 }
