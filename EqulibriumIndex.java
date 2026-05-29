@@ -12,11 +12,14 @@ public class EqulibriumIndex {
      * @return The equilibrium index, or -1 if no such index exists
      */
     public static int findEquilibrium(int[] arr) {
+        // First, calculate the total sum of the array
         int totalSum = 0;
         for (int x : arr) {
             totalSum += x;
         }
+        // Left sum is initialized to 0
         int leftSum = 0;
+        // Iterate through the array to find equilibrium index
         for (int i = 0; i < arr.length; i++) {
             totalSum -= arr[i];
             if (leftSum == totalSum) {
