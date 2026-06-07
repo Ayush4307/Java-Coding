@@ -1,7 +1,5 @@
 package Sorting;
-
 import java.util.Arrays;
-
 public class RadixSort {
     private static int getMax(int[] array) {
         int max = array[0];
@@ -12,7 +10,6 @@ public class RadixSort {
         }
         return max;
     }
-
     private static void countSort(int[] array, int exp) {
         int n = array.length;
         int[] output = new int[n];
