@@ -4,18 +4,48 @@
  * Problem: Compute the N-th Fibonacci number.
  * Fibonacci sequence: F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2)
  *
- * This file demonstrates FOUR approaches with different time/space trade-offs:
+ * This file demonstrates FIVE approaches with different time/space trade-offs:
  *
  * ┌─────────────────────────────┬────────────┬──────────────┐
  * │ Method                      │ Time       │ Space        │
  * ├─────────────────────────────┼────────────┼──────────────┤
- * │ fibDP            (DP array) │ O(n)       │ O(n)         │
- * │ fibOptimized     (2 vars)   │ O(n)       │ O(1)         │
- * │ fibRecursiveMemo (top-down) │ O(n)       │ O(n)         │
- * │ fibFastDoubling  (math)     │ O(log n)   │ O(log n)     │
+ * │ fibRecursive   (naive)      │ O(2^n) !!  │ O(n)         │
+ * │ fibDP          (DP array)   │ O(n)       │ O(n)         │
+ * │ fibOptimized   (2 vars)     │ O(n)       │ O(1)         │
+ * │ fibRecursiveMemo(top-down)  │ O(n)       │ O(n)         │
+ * │ fibFastDoubling (math)      │ O(log n)   │ O(log n)     │
  * └─────────────────────────────┴────────────┴──────────────┘
  */
 public class Fibonacci {
+
+    /**
+     * Computes F(n) using plain recursion WITHOUT memoization (naive approach).
+     *
+     * Approach: Directly translates the mathematical recurrence:
+     *   F(n) = F(n-1) + F(n-2)
+     * Each call branches into two more calls, forming a binary call tree.
+     *
+     * Why is this BAD?
+     * - The call tree has ~2^n nodes. For n=40, that is over 1 billion calls!
+     * - Many sub-problems (e.g., F(n-2)) are recomputed exponentially many times.
+     * - Example: F(5) computes F(3) twice, F(2) three times, F(1) five times.
+     * - Use memoization (fibRecursiveMemoized) or iteration to fix this.
+     *
+     * ⚠ WARNING: NEVER use this in production for n > ~30.
+     *
+     * Time Complexity  : O(2^n) — exponential; binary call tree with ~2^n nodes.
+     * Space Complexity : O(n)   — maximum call stack depth equals n.
+     *
+     * @param n the index in the Fibonacci sequence (n >= 0)
+     * @return F(n), or -1 if n is negative
+     */
+    public static int fibRecursive(int n) {
+        if (n < 0) return -1;
+        // Base cases
+        if (n <= 1) return n;
+        // Two recursive calls — each spawns two more: exponential growth!
+        return fibRecursive(n - 1) + fibRecursive(n - 2);
+    }
 
     /**
      * Computes F(n) using a bottom-up DP array (tabulation).
@@ -157,7 +187,9 @@ public class Fibonacci {
 
     public static void main(String[] args) {
         int n = 10;
-        System.out.println("Using DP array [O(n) time, O(n) space]:");
+        System.out.println("Using naive recursion [O(2^n) time — AVOID for large n]:");
+        System.out.println("F(" + n + ") = " + fibRecursive(n));
+        System.out.println("\nUsing DP array [O(n) time, O(n) space]:");
         System.out.println("F(" + n + ") = " + fibDP(n));
         System.out.println("\nUsing optimized space [O(n) time, O(1) space]:");
         System.out.println("F(" + n + ") = " + fibOptimized(n));
