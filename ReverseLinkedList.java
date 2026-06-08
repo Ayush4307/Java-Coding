@@ -143,5 +143,71 @@ public class ReverseLinkedList {
         System.out.println("\nReversing back with recursion [O(n) space]:");
         head = reverseRecursive(head);
         print(head);
+
+        // Demo: reverseInGroups
+        Node head2 = new Node(1);
+        head2.next = new Node(2);
+        head2.next.next = new Node(3);
+        head2.next.next.next = new Node(4);
+        head2.next.next.next.next = new Node(5);
+        head2.next.next.next.next.next = new Node(6);
+        System.out.println("\nOriginal List for group reversal:");
+        print(head2);
+        head2 = reverseInGroups(head2, 3); // Reverse in groups of 3
+        System.out.println("After reverseInGroups(k=3) [O(n) time, O(n/k) space]:");
+        print(head2);
+    }
+
+    /**
+     * Reverses a linked list in groups of k nodes at a time.
+     *
+     * Example: List = 1->2->3->4->5->6, k=3
+     * Result  = 3->2->1->6->5->4
+     *
+     * Approach (Recursive):
+     * 1. Reverse the first k nodes iteratively (same 3-pointer technique).
+     * 2. Recursively reverse the rest of the list (from node k+1 onwards).
+     * 3. Connect the tail of the first reversed group to the head of the recursive result.
+     *
+     * Why recursion for group reversal?
+     * - Each group of k nodes is processed exactly once.
+     * - Recursion naturally "chops off" k nodes each time and processes the rest.
+     * - The recursive call stack depth is n/k (one frame per group), not n.
+     * - Cleaner to implement than a purely iterative doubly-nested approach.
+     *
+     * Time Complexity  : O(n)   — every node is visited exactly once across all groups.
+     * Space Complexity : O(n/k) — recursion stack depth equals number of groups (n/k).
+     *                   In worst case k=1: O(n). In best case k=n: O(1).
+     *
+     * @param head the head of the linked list
+     * @param k    the group size (must be >= 1)
+     * @return the new head of the list after group reversal
+     */
+    static Node reverseInGroups(Node head, int k) {
+        if (head == null || k <= 1) return head;
+
+        Node curr = head;
+        Node prev = null;
+        int count = 0;
+
+        // Step 1: Reverse the first k nodes of the current group — O(k)
+        while (curr != null && count < k) {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+            count++;
+        }
+
+        // 'prev' is now the new head of this reversed group
+        // 'curr' points to the (k+1)-th node (start of next group)
+
+        // Step 2: Recursively reverse the remaining list and link it
+        // head is now the TAIL of the reversed group — connect it to the next group
+        if (curr != null) {
+            head.next = reverseInGroups(curr, k); // Recursive call: O(n/k) depth
+        }
+
+        return prev; // New head of this group
     }
 }
