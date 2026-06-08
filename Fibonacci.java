@@ -185,6 +185,46 @@ public class Fibonacci {
         }
     }
 
+    /**
+     * Prints the first 'count' Fibonacci numbers to standard output.
+     *
+     * Approach: Uses fibOptimized (O(1) space two-variable iteration) to generate
+     * the series. Iterative generation is chosen over recursive because:
+     *
+     *   1. Recursion: Each call to fibRecursive(i) takes O(2^i) time independently,
+     *      making printing n numbers an O(2^n) operation — completely impractical.
+     *
+     *   2. DP Array: fibDP builds a full array, but to print a series we would
+     *      rebuild it for each element, wasting memory.
+     *
+     *   3. Iterative (chosen): We maintain a rolling window of two variables and
+     *      print each number as we compute it. One pass, minimal memory.
+     *
+     * Why iteration over recursion for series generation?
+     * - Avoids O(n) call stack depth (no StackOverflowError risk).
+     * - Cache-friendly sequential memory access.
+     * - Produces all values in a single O(n) pass with O(1) extra space.
+     *
+     * Time Complexity  : O(count) — one loop iteration per Fibonacci number printed.
+     * Space Complexity : O(1)     — only two integer rolling variables (prev, curr).
+     *
+     * @param count the number of Fibonacci numbers to print (must be > 0)
+     */
+    public static void printFibSeries(int count) {
+        if (count <= 0) return;
+        System.out.print("Fibonacci Series (" + count + " terms): ");
+
+        // Rolling two-variable approach — O(1) space, O(count) time
+        int prev = 0, curr = 1;
+        for (int i = 0; i < count; i++) {
+            System.out.print(prev + " ");
+            int next = prev + curr;
+            prev = curr;
+            curr = next;
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         int n = 10;
         System.out.println("Using naive recursion [O(2^n) time — AVOID for large n]:");
@@ -197,10 +237,10 @@ public class Fibonacci {
         System.out.println("F(" + n + ") = " + fibRecursiveMemoized(n));
         System.out.println("\nUsing fast doubling [O(log n) time, O(log n) space]:");
         System.out.println("F(" + n + ") = " + fibFastDoubling(n));
-        System.out.println("\nFirst 10 Fibonacci numbers:");
-        for (int i = 0; i < 10; i++) {
-            System.out.print(fibDP(i) + " ");
-        }
+
+        // Demo: printFibSeries — iterative, O(n) time, O(1) space
         System.out.println();
+        printFibSeries(10);
+        printFibSeries(15);
     }
 }
