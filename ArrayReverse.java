@@ -44,6 +44,38 @@ public class ArrayReverse {
         }
     }
 
+    /**
+     * Reverses a sub-range of the array in-place, from index 'from' to index 'to' (inclusive).
+     *
+     * Approach: Same two-pointer technique, but scoped to the given index range.
+     * This is useful in algorithms like Rotate Array, where partial reversal is needed.
+     *
+     * Why sub-range reversal?
+     * - Many classic problems (e.g., rotate array by k) decompose into 3 sub-reversals.
+     * - Reusing this method keeps code DRY and the logic modular.
+     *
+     * Time Complexity  : O(to - from + 1) — proportional to the sub-range length.
+     *                    In the worst case (full array), this is O(n).
+     * Space Complexity : O(1) — only a temp variable; no extra memory allocated.
+     *
+     * @param arr  the array containing the sub-range
+     * @param from the starting index (inclusive)
+     * @param to   the ending index (inclusive)
+     */
+    public static void reverseSubArray(int[] arr, int from, int to) {
+        // Validate index bounds before proceeding
+        if (arr == null || from < 0 || to >= arr.length || from >= to) return;
+
+        // Two-pointer approach scoped to [from, to]
+        while (from < to) {
+            int temp = arr[from];
+            arr[from] = arr[to];
+            arr[to] = temp;
+            from++;
+            to--;
+        }
+    }
+
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
         System.out.println("Original array: " + java.util.Arrays.toString(arr));
@@ -64,6 +96,12 @@ public class ArrayReverse {
         System.out.println("\nOriginal array (empty): " + java.util.Arrays.toString(arr4));
         reverseArray(arr4);
         System.out.println("Reversed array: " + java.util.Arrays.toString(arr4));
+
+        // Demo: reverseSubArray
+        int[] arr5 = {10, 20, 30, 40, 50, 60};
+        System.out.println("\nOriginal array: " + java.util.Arrays.toString(arr5));
+        reverseSubArray(arr5, 1, 4);  // Reverse indices 1 to 4
+        System.out.println("After reverseSubArray(1,4): " + java.util.Arrays.toString(arr5));
     }
 }
 
