@@ -1,8 +1,40 @@
+/**
+ * ArrayReverse.java
+ *
+ * Problem: Reverse an array in-place.
+ *
+ * Approach: Two-Pointer Technique
+ * ----------------------------------
+ * We use two pointers — one starting from the beginning (left) and one from
+ * the end (right). We swap the elements at both pointers and move them towards
+ * each other until they meet in the middle.
+ *
+ * Why this approach?
+ * - No extra array is needed (in-place), giving us O(1) space.
+ * - A single pass through half the array is enough, giving O(n) time.
+ * - Simple, clean, and cache-friendly compared to stack-based or recursive solutions.
+ *
+ * Time Complexity  : O(n) — we visit each element exactly once (n/2 swaps).
+ * Space Complexity : O(1) — only a constant number of temp variables used.
+ */
 public class ArrayReverse {
+
+    /**
+     * Reverses the entire array in-place using the two-pointer technique.
+     *
+     * Time Complexity  : O(n) — n/2 swaps performed.
+     * Space Complexity : O(1) — no additional data structures used.
+     *
+     * @param arr the integer array to reverse (modified in-place)
+     */
     public static void reverseArray(int[] arr) {
+        // Edge case: null or single-element arrays are already "reversed"
         if (arr == null || arr.length <= 1) return;
+
         int start = 0;
         int end = arr.length - 1;
+
+        // Two-pointer swap: O(n/2) iterations = O(n)
         while (start < end) {
             int temp = arr[start];
             arr[start] = arr[end];
@@ -11,6 +43,7 @@ public class ArrayReverse {
             end--;
         }
     }
+
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
         System.out.println("Original array: " + java.util.Arrays.toString(arr));
