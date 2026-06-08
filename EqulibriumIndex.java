@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * EqulibriumIndex.java
  *
@@ -62,6 +65,52 @@ public class EqulibriumIndex {
         return -1; // No equilibrium index found
     }
 
+    /**
+     * Finds ALL equilibrium indices in the array (not just the first one).
+     *
+     * An array can have multiple equilibrium points. For example:
+     * {0, 0, 0} has equilibrium at indices 0, 1, and 2.
+     *
+     * Approach: Same prefix-sum technique as findEquilibrium(), but instead of
+     * returning on the first match, we collect all matching indices into a list.
+     *
+     * Why return a List?
+     * - Real-world problems may require all equilibria (e.g., partitioning arrays).
+     * - The list grows only as large as the number of equilibrium points found,
+     *   which in the worst case is O(n) (e.g., all-zeros array).
+     *
+     * Time Complexity  : O(n) — two linear passes (total sum + scan).
+     * Space Complexity : O(k) where k = number of equilibrium indices found.
+     *                    O(1) auxiliary space excluding the output list.
+     *
+     * @param arr the input array
+     * @return a List of all equilibrium indices (empty list if none found)
+     */
+    public static List<Integer> findAllEquilibriumIndices(int[] arr) {
+        List<Integer> result = new ArrayList<>();
+        if (arr == null || arr.length == 0) return result;
+
+        // Step 1: Compute full total sum — O(n)
+        int totalSum = 0;
+        for (int x : arr) {
+            totalSum += x;
+        }
+
+        // Step 2: Scan and collect ALL equilibrium positions
+        int leftSum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            totalSum -= arr[i]; // rightSum = totalSum after removing arr[i]
+
+            if (leftSum == totalSum) {
+                result.add(i); // Collect instead of returning early
+            }
+
+            leftSum += arr[i];
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         int[] arr = {-7, 1, 5, 2, -4, 3, 0};
         System.out.println("Equilibrium Index: " + findEquilibrium(arr));
@@ -71,5 +120,14 @@ public class EqulibriumIndex {
 
         int[] arr3 = {5};
         System.out.println("Equilibrium Index (single element): " + findEquilibrium(arr3));
+
+        // Demo: findAllEquilibriumIndices
+        int[] arr4 = {0, 0, 0, 0};
+        System.out.println("\nAll equilibrium indices in {0,0,0,0}: "
+                + findAllEquilibriumIndices(arr4));
+
+        int[] arr5 = {1, 3, 5, 2, 2};
+        System.out.println("All equilibrium indices in {1,3,5,2,2}: "
+                + findAllEquilibriumIndices(arr5));
     }
 }
