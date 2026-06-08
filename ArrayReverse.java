@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  * ArrayReverse.java
  *
@@ -76,6 +78,42 @@ public class ArrayReverse {
         }
     }
 
+    /**
+     * Reverses the array using a Stack (LIFO) data structure.
+     *
+     * Approach: Push all elements onto a stack, then pop them back into the array.
+     * A stack naturally reverses order because of its LIFO (Last-In, First-Out) property.
+     *
+     * Why show this approach?
+     * - Demonstrates the conceptual link between stacks and reversal.
+     * - Useful when elements arrive as a stream (not random-access array).
+     *
+     * Trade-off vs Two-Pointer:
+     * - Both have O(n) time, but this uses O(n) extra space for the stack.
+     * - Two-pointer is PREFERRED in production code since it is O(1) space.
+     * - This approach is shown for educational comparison only.
+     *
+     * Time Complexity  : O(n) — one full pass to push, one full pass to pop.
+     * Space Complexity : O(n) — stack holds all n elements simultaneously.
+     *
+     * @param arr the integer array to reverse (modified in-place via stack)
+     */
+    public static void reverseUsingStack(int[] arr) {
+        if (arr == null || arr.length <= 1) return;
+
+        Stack<Integer> stack = new Stack<>();
+
+        // Push all elements — O(n) time, O(n) space
+        for (int val : arr) {
+            stack.push(val);
+        }
+
+        // Pop back into array — stack reverses order automatically (LIFO)
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = stack.pop();
+        }
+    }
+
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
         System.out.println("Original array: " + java.util.Arrays.toString(arr));
@@ -100,8 +138,14 @@ public class ArrayReverse {
         // Demo: reverseSubArray
         int[] arr5 = {10, 20, 30, 40, 50, 60};
         System.out.println("\nOriginal array: " + java.util.Arrays.toString(arr5));
-        reverseSubArray(arr5, 1, 4);  // Reverse indices 1 to 4
+        reverseSubArray(arr5, 1, 4);
         System.out.println("After reverseSubArray(1,4): " + java.util.Arrays.toString(arr5));
+
+        // Demo: reverseUsingStack (O(n) space — for educational comparison)
+        int[] arr6 = {5, 10, 15, 20, 25};
+        System.out.println("\nOriginal array: " + java.util.Arrays.toString(arr6));
+        reverseUsingStack(arr6);
+        System.out.println("Reversed via Stack [O(n) space]: " + java.util.Arrays.toString(arr6));
     }
 }
 
