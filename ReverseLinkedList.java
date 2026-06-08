@@ -156,6 +156,18 @@ public class ReverseLinkedList {
         head2 = reverseInGroups(head2, 3); // Reverse in groups of 3
         System.out.println("After reverseInGroups(k=3) [O(n) time, O(n/k) space]:");
         print(head2);
+
+        // Demo: isPalindrome
+        Node pal1 = new Node(1);
+        pal1.next = new Node(2);
+        pal1.next.next = new Node(2);
+        pal1.next.next.next = new Node(1);
+        System.out.println("\nList: 1->2->2->1 isPalindrome? " + isPalindrome(pal1));
+
+        Node pal2 = new Node(1);
+        pal2.next = new Node(2);
+        pal2.next.next = new Node(3);
+        System.out.println("List: 1->2->3      isPalindrome? " + isPalindrome(pal2));
     }
 
     /**
@@ -209,5 +221,65 @@ public class ReverseLinkedList {
         }
 
         return prev; // New head of this group
+    }
+
+    /**
+     * Checks if the singly linked list is a palindrome.
+     *
+     * A palindrome reads the same forwards and backwards.
+     * Example: 1->2->2->1 is a palindrome. 1->2->3 is not.
+     *
+     * Approach (Slow-Fast Pointer + In-Place Reversal):
+     * 1. Use slow/fast pointers to find the middle of the list.
+     *    - slow moves 1 step; fast moves 2 steps.
+     *    - When fast reaches end, slow is at the midpoint.
+     * 2. Reverse the second half of the list in-place (using our reverse() method).
+     * 3. Compare the first half and reversed second half node-by-node.
+     * 4. Restore the list by reversing the second half back (optional, for immutability).
+     *
+     * Why this approach?
+     * - Naive approach: copy all values to an array, check palindrome — O(n) space.
+     * - This approach avoids extra memory entirely.
+     * - The in-place second-half reversal reuses our existing reverse() — DRY code.
+     * - Slow/fast pointer is the canonical O(1)-space midpoint finding technique.
+     *
+     * Time Complexity  : O(n) — one pass to find middle + one pass to reverse + one pass to compare.
+     * Space Complexity : O(1) — only pointer variables; no extra data structures.
+     *
+     * @param head the head of the linked list to check
+     * @return true if the list is a palindrome, false otherwise
+     */
+    static boolean isPalindrome(Node head) {
+        if (head == null || head.next == null) return true;
+
+        // Step 1: Find the middle using slow/fast pointers — O(n/2)
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;       // Moves 1 step
+            fast = fast.next.next;  // Moves 2 steps
+        }
+        // 'slow' is now at the start of the second half
+
+        // Step 2: Reverse the second half in-place — O(n/2), O(1) space
+        Node secondHalfHead = reverse(slow);
+        Node secondHalfCopy = secondHalfHead; // Save to restore later
+
+        // Step 3: Compare first and reversed second half — O(n/2)
+        Node firstHalf = head;
+        boolean isPalin = true;
+        while (secondHalfHead != null) {
+            if (firstHalf.data != secondHalfHead.data) {
+                isPalin = false;
+                break;
+            }
+            firstHalf = firstHalf.next;
+            secondHalfHead = secondHalfHead.next;
+        }
+
+        // Step 4: Restore the list (reverse the second half back) — O(n/2)
+        reverse(secondHalfCopy);
+
+        return isPalin;
     }
 }
