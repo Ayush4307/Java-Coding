@@ -111,6 +111,57 @@ public class EqulibriumIndex {
         return result;
     }
 
+    /**
+     * Finds the first equilibrium index using a naive brute-force approach.
+     *
+     * Approach (Brute Force):
+     * For every index i, recompute the left sum (arr[0..i-1]) and right sum
+     * (arr[i+1..n-1]) using nested loops and compare them.
+     *
+     * Why include this?
+     * - Shows the "obvious" first solution most beginners reach for.
+     * - Demonstrates why it is suboptimal: repeated summation work.
+     * - Clearly highlights the improvement that the prefix-sum approach provides.
+     *
+     * Time Complexity  : O(n²) — for each of the n indices, we compute two sums
+     *                    each of which takes O(n) time in the worst case.
+     * Space Complexity : O(1) — no extra data structures; only scalar accumulators.
+     *
+     * Verdict: NOT recommended for large inputs. Use findEquilibrium() instead.
+     *
+     * @param arr the input array
+     * @return the first equilibrium index, or -1 if none exists
+     */
+    public static int findEquilibriumBruteForce(int[] arr) {
+        if (arr == null || arr.length == 0) return -1;
+
+        int n = arr.length;
+
+        // Outer loop: try each index as a potential equilibrium — O(n)
+        for (int i = 0; i < n; i++) {
+
+            // Compute left sum: sum of arr[0..i-1] — O(n) per iteration
+            int leftSum = 0;
+            for (int j = 0; j < i; j++) {
+                leftSum += arr[j];
+            }
+
+            // Compute right sum: sum of arr[i+1..n-1] — O(n) per iteration
+            int rightSum = 0;
+            for (int j = i + 1; j < n; j++) {
+                rightSum += arr[j];
+            }
+
+            // Total per outer iteration: O(n) + O(n) = O(n)
+            // Combined with outer loop: O(n) * O(n) = O(n²)
+            if (leftSum == rightSum) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
     public static void main(String[] args) {
         int[] arr = {-7, 1, 5, 2, -4, 3, 0};
         System.out.println("Equilibrium Index: " + findEquilibrium(arr));
@@ -129,5 +180,10 @@ public class EqulibriumIndex {
         int[] arr5 = {1, 3, 5, 2, 2};
         System.out.println("All equilibrium indices in {1,3,5,2,2}: "
                 + findAllEquilibriumIndices(arr5));
+
+        // Demo: brute-force vs optimal — same result, different complexity
+        int[] arr6 = {-7, 1, 5, 2, -4, 3, 0};
+        System.out.println("\nBrute Force [O(n²)]: " + findEquilibriumBruteForce(arr6));
+        System.out.println("Optimal     [O(n)] : " + findEquilibrium(arr6));
     }
 }
