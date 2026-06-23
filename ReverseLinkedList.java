@@ -25,8 +25,7 @@ class Node {
     int data;
     Node next;
 
-    /** Default constructor. */
-    Node() {}
+    // Default constructor removed as it's never used
 
     /**
      * Convenience constructor to create a node with a given value.

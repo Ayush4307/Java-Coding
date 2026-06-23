@@ -48,7 +48,6 @@ public class HashSet<K> {
 
     // ─── Add ─────────────────────────────────────────────────────────────────
     /** Returns true if key was newly added. O(1) amortised. */
-    @SuppressWarnings("unchecked")
     public boolean add(K key) {
         if ((double)(size + 1) / capacity > LOAD_FACTOR) resize();
         int idx = hash(key);
@@ -73,7 +72,6 @@ public class HashSet<K> {
     }
 
     // ─── Remove ──────────────────────────────────────────────────────────────
-    @SuppressWarnings("unchecked")
     public boolean remove(K key) {
         int idx = hash(key);
         for (int i = 0; i < capacity; i++) {
@@ -89,7 +87,6 @@ public class HashSet<K> {
     }
 
     // ─── Contains ────────────────────────────────────────────────────────────
-    @SuppressWarnings("unchecked")
     public boolean contains(K key) {
         int idx = hash(key);
         for (int i = 0; i < capacity; i++) {
