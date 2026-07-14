@@ -38,9 +38,14 @@ public class ArrayReverse {
 
         // Two-pointer swap: O(n/2) iterations = O(n)
         while (start < end) {
+            // 1. Store the value at 'start' pointer temporarily
             int temp = arr[start];
+            // 2. Overwrite 'start' value with 'end' value
             arr[start] = arr[end];
+            // 3. Put the original 'start' value into the 'end' position
             arr[end] = temp;
+            
+            // Move pointers inward for the next iteration
             start++;
             end--;
         }
