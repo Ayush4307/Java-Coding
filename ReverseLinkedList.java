@@ -40,6 +40,19 @@ class Node {
 public class ReverseLinkedList {
 
     /**
+     * Prints the linked list values sequentially.
+     * @param head the head node of the linked list
+     */
+    public static void printList(Node head) {
+        Node curr = head;
+        while (curr != null) {
+            System.out.print(curr.data + " -> ");
+            curr = curr.next;
+        }
+        System.out.println("null");
+    }
+
+    /**
      * Reverses a singly linked list iteratively using the three-pointer technique.
      *
      * Approach:
