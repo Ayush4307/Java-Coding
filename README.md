@@ -48,7 +48,7 @@ Java-Coding/
 │   └── ShellSort.java
 │
 ├── ArrayReverse.java
-├── EqulibriumIndex.java
+├── EquilibriumIndex.java
 ├── Fibonacci.java
 └── ReverseLinkedList.java
 ```
