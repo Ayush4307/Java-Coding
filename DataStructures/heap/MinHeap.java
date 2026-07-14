@@ -1,5 +1,3 @@
-﻿package DataStructures.heap;
-
 /**
  * MinHeap.java
  *
@@ -12,7 +10,7 @@
  *  - peekMin()     : O(1)
  *  - decreaseKey() : O(log n)
  *  - delete(index) : O(log n)
- *  - buildHeap()   : O(n)  â† Floyd's algorithm
+ *  - buildHeap()   : O(n)  ← Floyd's algorithm
  *
  * Heap properties:
  *  - Parent of i  : (i-1) / 2
@@ -40,7 +38,7 @@ public class MinHeap {
         size = 0;
     }
 
-    // â”€â”€â”€ Parent / Children â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Parent / Children ───────────────────────────────────────────────────
     private int parent(int i) { return (i - 1) / 2; }
     private int left(int i)   { return 2 * i + 1; }
     private int right(int i)  { return 2 * i + 2; }
@@ -49,7 +47,7 @@ public class MinHeap {
         int tmp = heap[i]; heap[i] = heap[j]; heap[j] = tmp;
     }
 
-    // â”€â”€â”€ Insert â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Insert ───────────────────────────────────────────────────────────────
     /** Inserts key and sifts up. O(log n). */
     public void insert(int key) {
         if (size == capacity) throw new IllegalStateException("Heap is full");
@@ -62,7 +60,7 @@ public class MinHeap {
         }
     }
 
-    // â”€â”€â”€ Extract Min â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Extract Min ─────────────────────────────────────────────────────────
     /** Removes and returns the minimum. O(log n). */
     public int extractMin() {
         if (size == 0) throw new java.util.NoSuchElementException("Heap is empty");
@@ -84,13 +82,13 @@ public class MinHeap {
         }
     }
 
-    // â”€â”€â”€ Peek Min â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Peek Min ────────────────────────────────────────────────────────────
     public int peekMin() {
         if (size == 0) throw new java.util.NoSuchElementException();
         return heap[0];
     }
 
-    // â”€â”€â”€ Decrease Key â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Decrease Key ────────────────────────────────────────────────────────
     /** Reduces heap[index] to newKey, then sifts up. O(log n). */
     public void decreaseKey(int index, int newKey) {
         if (newKey > heap[index]) throw new IllegalArgumentException("New key is greater");
@@ -101,13 +99,13 @@ public class MinHeap {
         }
     }
 
-    // â”€â”€â”€ Delete at index â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Delete at index ─────────────────────────────────────────────────────
     public void delete(int index) {
         decreaseKey(index, Integer.MIN_VALUE);
         extractMin();
     }
 
-    // â”€â”€â”€ Build Heap from array (Floyd's O(n)) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Build Heap from array (Floyd's O(n)) ────────────────────────────────
     public void buildHeap(int[] arr) {
         if (arr.length > capacity) throw new IllegalStateException("Array too large for heap");
         size = arr.length;
@@ -116,7 +114,7 @@ public class MinHeap {
         for (int i = size / 2 - 1; i >= 0; i--) heapifyDown(i);
     }
 
-    // â”€â”€â”€ Heap Sort (ascending) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Heap Sort (ascending) ────────────────────────────────────────────────
     /**
      * Sorts an array using a MaxHeap approach in-place.
      * Time: O(n log n), Space: O(1)
@@ -142,7 +140,7 @@ public class MinHeap {
         }
     }
 
-    // â”€â”€â”€ K Smallest elements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── K Smallest elements ─────────────────────────────────────────────────
     /**
      * Returns k smallest elements from arr using a Min-Heap.
      * Time: O(n + k log n)
@@ -155,7 +153,7 @@ public class MinHeap {
         return result;
     }
 
-    // â”€â”€â”€ Utilities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Utilities ───────────────────────────────────────────────────────────
     public int size()        { return size; }
     public boolean isEmpty() { return size == 0; }
 
@@ -168,7 +166,7 @@ public class MinHeap {
         System.out.println("]");
     }
 
-    // â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Main ─────────────────────────────────────────────────────────────────
     public static void main(String[] args) {
         MinHeap mh = new MinHeap(15);
         int[] vals = {15, 10, 5, 3, 20, 8};
@@ -198,4 +196,3 @@ public class MinHeap {
         System.out.println("]");
     }
 }
-

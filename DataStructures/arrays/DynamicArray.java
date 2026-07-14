@@ -1,9 +1,7 @@
-﻿package DataStructures.arrays;
-
 /**
  * DynamicArray.java
  *
- * A generic resizable (dynamic) array â€” similar to Java's ArrayList.
+ * A generic resizable (dynamic) array — similar to Java's ArrayList.
  *
  * Strategy:
  *  - Start with capacity = INITIAL_CAPACITY
@@ -33,7 +31,7 @@ public class DynamicArray<T> {
         size = 0;
     }
 
-    // â”€â”€â”€ Grow / Shrink â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Grow / Shrink ───────────────────────────────────────────────────────
     private void grow() {
         capacity *= 2;
         Object[] newData = new Object[capacity];
@@ -49,7 +47,7 @@ public class DynamicArray<T> {
         data = newData;
     }
 
-    // â”€â”€â”€ Add â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Add ─────────────────────────────────────────────────────────────────
     /** Appends element at the end. Amortised O(1). */
     public void add(T element) {
         if (size == capacity) grow();
@@ -65,7 +63,7 @@ public class DynamicArray<T> {
         size++;
     }
 
-    // â”€â”€â”€ Get / Set â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Get / Set ───────────────────────────────────────────────────────────
     public T get(int index) {
         checkIndex(index);
         return (T) data[index];
@@ -78,7 +76,7 @@ public class DynamicArray<T> {
         return old;
     }
 
-    // â”€â”€â”€ Remove â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Remove ──────────────────────────────────────────────────────────────
     /** Removes element at index and returns it. O(n). */
     public T remove(int index) {
         checkIndex(index);
@@ -97,7 +95,7 @@ public class DynamicArray<T> {
         return true;
     }
 
-    // â”€â”€â”€ Search â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Search ──────────────────────────────────────────────────────────────
     public int indexOf(Object element) {
         for (int i = 0; i < size; i++) {
             if (element == null ? data[i] == null : element.equals(data[i])) return i;
@@ -107,7 +105,7 @@ public class DynamicArray<T> {
 
     public boolean contains(Object element) { return indexOf(element) != -1; }
 
-    // â”€â”€â”€ Utilities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Utilities ───────────────────────────────────────────────────────────
     public int size()        { return size; }
     public boolean isEmpty() { return size == 0; }
     public int capacity()    { return capacity; }
@@ -137,7 +135,7 @@ public class DynamicArray<T> {
         return sb.append("]").toString();
     }
 
-    // â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Main ─────────────────────────────────────────────────────────────────
     public static void main(String[] args) {
         DynamicArray<Integer> da = new DynamicArray<>();
 
@@ -164,4 +162,3 @@ public class DynamicArray<T> {
         System.out.println("After set(0,-1): " + da);
     }
 }
-

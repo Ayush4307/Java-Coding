@@ -1,5 +1,3 @@
-﻿package DataStructures.queue;
-
 /**
  * QueueArray.java
  *
@@ -39,7 +37,7 @@ public class QueueArray<T> {
         size  = 0;
     }
 
-    // â”€â”€â”€ Core Operations â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Core Operations ─────────────────────────────────────────────────────
     /** Add element to rear. O(1). */
     public void enqueue(T item) {
         if (isFull()) throw new IllegalStateException("Queue is full");
@@ -86,7 +84,7 @@ public class QueueArray<T> {
         System.out.println("]");
     }
 
-    // â”€â”€â”€ Application: BFS Level-Order Traversal helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Application: BFS Level-Order Traversal helper ───────────────────────
     // (Full BFS implemented in BinaryTree.java, shown here as Queue usage demo)
 
     /**
@@ -106,7 +104,7 @@ public class QueueArray<T> {
         System.out.println();
     }
 
-    // â”€â”€â”€ Application: Reverse first k elements of a queue â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Application: Reverse first k elements of a queue ────────────────────
     /**
      * Reverses the first k elements of the queue, rest stays intact.
      * Uses an auxiliary stack.
@@ -120,7 +118,7 @@ public class QueueArray<T> {
         for (int i = 0; i < q.size() - k; i++) q.enqueue(q.dequeue());
     }
 
-    // â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Main ─────────────────────────────────────────────────────────────────
     public static void main(String[] args) {
         QueueArray<Integer> q = new QueueArray<>(8);
         for (int i = 1; i <= 5; i++) q.enqueue(i * 10);
@@ -140,4 +138,3 @@ public class QueueArray<T> {
         System.out.print("After : "); q2.print();
     }
 }
-

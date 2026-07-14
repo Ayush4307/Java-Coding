@@ -1,5 +1,3 @@
-﻿package DataStructures.stack;
-
 /**
  * StackArray.java
  *
@@ -16,7 +14,7 @@
  * Space Complexity: O(n) where n = capacity
  *
  * Applications:
- *  - Expression evaluation and conversion (infix â†” postfix â†” prefix)
+ *  - Expression evaluation and conversion (infix ↔ postfix ↔ prefix)
  *  - Undo-redo mechanism
  *  - Function call stack (recursion)
  *  - Balanced parentheses checking
@@ -34,7 +32,7 @@ public class StackArray<T> {
         top = -1;
     }
 
-    // â”€â”€â”€ Core Operations â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Core Operations ─────────────────────────────────────────────────────
     /** Push element onto stack. O(1). */
     public void push(T item) {
         if (isFull()) throw new StackOverflowError("Stack is full (capacity=" + capacity + ")");
@@ -70,7 +68,7 @@ public class StackArray<T> {
         System.out.println("]");
     }
 
-    // â”€â”€â”€ Application 1: Balanced Parentheses â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Application 1: Balanced Parentheses ─────────────────────────────────
     /**
      * Checks if the given expression has balanced brackets: (), [], {}.
      * Time: O(n), Space: O(n)
@@ -91,7 +89,7 @@ public class StackArray<T> {
         return stack.isEmpty();
     }
 
-    // â”€â”€â”€ Application 2: Infix to Postfix â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Application 2: Infix to Postfix ─────────────────────────────────────
     /**
      * Converts infix expression to postfix (Reverse Polish Notation).
      * Supports: +, -, *, /, ^, (, )
@@ -129,7 +127,7 @@ public class StackArray<T> {
         };
     }
 
-    // â”€â”€â”€ Application 3: Evaluate Postfix â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Application 3: Evaluate Postfix ─────────────────────────────────────
     /**
      * Evaluates a postfix expression (operands are single digits).
      * Time: O(n), Space: O(n)
@@ -154,7 +152,7 @@ public class StackArray<T> {
         return stack.pop();
     }
 
-    // â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Main ─────────────────────────────────────────────────────────────────
     public static void main(String[] args) {
         StackArray<Integer> stack = new StackArray<>(10);
         stack.push(10); stack.push(20); stack.push(30);
@@ -168,7 +166,7 @@ public class StackArray<T> {
         System.out.println("\"({[]})\" -> " + isBalanced("({[]})"));
         System.out.println("\"({[})\"  -> " + isBalanced("({[})"));
 
-        // Infix â†’ Postfix
+        // Infix → Postfix
         System.out.println("\n-- Infix to Postfix --");
         String infix = "a+b*(c^d-e)^(f+g*h)-i";
         System.out.println("Infix  : " + infix);
@@ -180,4 +178,3 @@ public class StackArray<T> {
         System.out.println("Postfix \"" + pf + "\" = " + evalPostfix(pf));
     }
 }
-

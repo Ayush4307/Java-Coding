@@ -1,5 +1,3 @@
-﻿package DataStructures.queue;
-
 /**
  * Deque.java  (Double-Ended Queue)
  *
@@ -22,18 +20,18 @@
  */
 public class Deque<T> {
 
-    // â”€â”€â”€ Node â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Node ─────────────────────────────────────────────────────────────────
     private static class Node<T> {
         T data;
         Node<T> prev, next;
         Node(T data) { this.data = data; }
     }
 
-    // â”€â”€â”€ Fields â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Fields ───────────────────────────────────────────────────────────────
     private Node<T> head, tail;
     private int size;
 
-    // â”€â”€â”€ Add â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Add ──────────────────────────────────────────────────────────────────
     public void addFirst(T data) {
         Node<T> node = new Node<>(data);
         if (head == null) { head = tail = node; }
@@ -48,7 +46,7 @@ public class Deque<T> {
         size++;
     }
 
-    // â”€â”€â”€ Remove â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Remove ───────────────────────────────────────────────────────────────
     public T removeFirst() {
         if (head == null) throw new java.util.NoSuchElementException();
         T data = head.data;
@@ -67,7 +65,7 @@ public class Deque<T> {
         return data;
     }
 
-    // â”€â”€â”€ Peek â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Peek ────────────────────────────────────────────────────────────────
     public T peekFirst() {
         if (head == null) throw new java.util.NoSuchElementException();
         return head.data;
@@ -78,7 +76,7 @@ public class Deque<T> {
         return tail.data;
     }
 
-    // â”€â”€â”€ Utilities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Utilities ───────────────────────────────────────────────────────────
     public int size()        { return size; }
     public boolean isEmpty() { return size == 0; }
 
@@ -93,7 +91,7 @@ public class Deque<T> {
         System.out.println("]");
     }
 
-    // â”€â”€â”€ Application: Sliding Window Maximum â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Application: Sliding Window Maximum ─────────────────────────────────
     /**
      * Returns an array of max values for each sliding window of size k.
      * Uses a monotonic deque (stores indices).
@@ -119,7 +117,7 @@ public class Deque<T> {
         return result;
     }
 
-    // â”€â”€â”€ Application: Palindrome check using Deque â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Application: Palindrome check using Deque ───────────────────────────
     public static boolean isPalindrome(String s) {
         Deque<Character> dq = new Deque<>();
         for (char c : s.toCharArray()) dq.addLast(c);
@@ -129,7 +127,7 @@ public class Deque<T> {
         return true;
     }
 
-    // â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Main ─────────────────────────────────────────────────────────────────
     public static void main(String[] args) {
         Deque<Integer> dq = new Deque<>();
         dq.addLast(10); dq.addLast(20); dq.addLast(30);
@@ -155,4 +153,3 @@ public class Deque<T> {
         System.out.println("\"hello\"   -> " + isPalindrome("hello"));
     }
 }
-
