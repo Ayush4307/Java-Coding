@@ -3,7 +3,14 @@ package Sorting;
 import java.util.Arrays;
 
 public class BubbleSort {
+    /**
+     * Sorts an array using the Bubble Sort algorithm.
+     * Time Complexity: O(n^2) worst/average, O(n) best (already sorted).
+     * Space Complexity: O(1) in-place.
+     * @param array the array to sort
+     */
     public static void sort(int[] array) {
+        if (array == null || array.length <= 1) return;
         int n = array.length;
         for (int i = 0; i < n - 1; i++) {
             boolean swapped = false;
