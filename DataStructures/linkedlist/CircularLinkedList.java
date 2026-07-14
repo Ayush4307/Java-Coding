@@ -1,3 +1,5 @@
+﻿package DataStructures.linkedlist;
+
 /**
  * CircularLinkedList.java
  *
@@ -25,20 +27,20 @@
  */
 public class CircularLinkedList<T> {
 
-    // ─── Node ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Node â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     private static class Node<T> {
         T data;
         Node<T> next;
         Node(T data) { this.data = data; }
     }
 
-    // ─── Fields ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Fields â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     private Node<T> tail;   // tail.next == head
     private int size;
 
     private Node<T> head() { return tail == null ? null : tail.next; }
 
-    // ─── Add ──────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Add â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** O(1) */
     public void addFirst(T data) {
         Node<T> node = new Node<>(data);
@@ -66,7 +68,7 @@ public class CircularLinkedList<T> {
         size++;
     }
 
-    // ─── Remove ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Remove â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** O(1) */
     public T removeFirst() {
         if (tail == null) throw new java.util.NoSuchElementException();
@@ -78,7 +80,7 @@ public class CircularLinkedList<T> {
         return data;
     }
 
-    /** O(n) – must find node before tail */
+    /** O(n) â€“ must find node before tail */
     public T removeLast() {
         if (tail == null) throw new java.util.NoSuchElementException();
         Node<T> prev = tail.next;            // start from head
@@ -104,7 +106,7 @@ public class CircularLinkedList<T> {
         return data;
     }
 
-    // ─── Search ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Search â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public boolean contains(T data) {
         if (tail == null) return false;
         Node<T> cur = head();
@@ -115,7 +117,7 @@ public class CircularLinkedList<T> {
         return false;
     }
 
-    // ─── Utilities ───────────────────────────────────────────────────────────
+    // â”€â”€â”€ Utilities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public int size()        { return size; }
     public boolean isEmpty() { return size == 0; }
 
@@ -131,7 +133,7 @@ public class CircularLinkedList<T> {
         System.out.println(" -> (back to HEAD)");
     }
 
-    // ─── Josephus Problem ─────────────────────────────────────────────────────
+    // â”€â”€â”€ Josephus Problem â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /**
      * Josephus problem: n people in a circle, every k-th person is eliminated.
      * Returns the position (1-indexed) of the last survivor.
@@ -158,7 +160,7 @@ public class CircularLinkedList<T> {
         return circle.head().data;
     }
 
-    // ─── Main ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public static void main(String[] args) {
         CircularLinkedList<Integer> cll = new CircularLinkedList<>();
         for (int i = 1; i <= 5; i++) cll.addLast(i * 10);
@@ -178,3 +180,4 @@ public class CircularLinkedList<T> {
         System.out.println("Survivor: " + josephus(6, 2));
     }
 }
+

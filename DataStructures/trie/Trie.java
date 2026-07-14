@@ -1,3 +1,5 @@
+﻿package DataStructures.trie;
+
 /**
  * Trie.java  (Prefix Tree / Digital Tree)
  *
@@ -13,7 +15,7 @@
  *  - allWordsWithPrefix  : O(m + total chars in subtree)
  *  - longestCommonPrefix : O(sum of all word lengths)
  *
- * Space Complexity: O(ALPHABET_SIZE × total_chars) ≈ O(26 × n)
+ * Space Complexity: O(ALPHABET_SIZE Ã— total_chars) â‰ˆ O(26 Ã— n)
  *
  * Applications:
  *  - Autocomplete / typeahead
@@ -25,19 +27,19 @@ import java.util.*;
 
 public class Trie {
 
-    // ─── Node ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Node â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     private static class TrieNode {
         TrieNode[] children = new TrieNode[26];
         boolean isEndOfWord;
         int wordCount;          // how many words pass through this node
     }
 
-    // ─── Root ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Root â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     private final TrieNode root;
 
     public Trie() { root = new TrieNode(); }
 
-    // ─── Insert ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Insert â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Inserts a word. O(m). */
     public void insert(String word) {
         TrieNode cur = root;
@@ -50,7 +52,7 @@ public class Trie {
         cur.isEndOfWord = true;
     }
 
-    // ─── Search ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Search â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Returns true if exact word exists. O(m). */
     public boolean search(String word) {
         TrieNode node = getNode(word.toLowerCase());
@@ -72,7 +74,7 @@ public class Trie {
         return cur;
     }
 
-    // ─── Delete ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Delete â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Removes word from trie (if it exists). O(m). */
     public boolean delete(String word) { return deleteRec(root, word.toLowerCase(), 0); }
 
@@ -90,13 +92,13 @@ public class Trie {
         return true;
     }
 
-    // ─── Count words with prefix ─────────────────────────────────────────────
+    // â”€â”€â”€ Count words with prefix â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public int countWordsWithPrefix(String prefix) {
         TrieNode node = getNode(prefix.toLowerCase());
         return node == null ? 0 : node.wordCount;
     }
 
-    // ─── All words with prefix (autocomplete) ────────────────────────────────
+    // â”€â”€â”€ All words with prefix (autocomplete) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public List<String> autocomplete(String prefix) {
         List<String> results = new ArrayList<>();
         TrieNode node = getNode(prefix.toLowerCase());
@@ -115,7 +117,7 @@ public class Trie {
         }
     }
 
-    // ─── Longest Common Prefix ────────────────────────────────────────────────
+    // â”€â”€â”€ Longest Common Prefix â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Returns the longest prefix shared by all inserted words. */
     public String longestCommonPrefix() {
         StringBuilder prefix = new StringBuilder();
@@ -132,13 +134,13 @@ public class Trie {
         return prefix.toString();
     }
 
-    // ─── Print all words ─────────────────────────────────────────────────────
+    // â”€â”€â”€ Print all words â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void printAll() {
         List<String> all = autocomplete("");
         System.out.println("All words (" + all.size() + "): " + all);
     }
 
-    // ─── Main ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public static void main(String[] args) {
         Trie trie = new Trie();
         String[] words = {"apple", "app", "application", "apply", "apt",
@@ -166,3 +168,4 @@ public class Trie {
         System.out.println("LCP of {flower, flow, flight}: \"" + lcp.longestCommonPrefix() + "\"");
     }
 }
+

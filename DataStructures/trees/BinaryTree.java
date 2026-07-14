@@ -1,3 +1,5 @@
+﻿package DataStructures.trees;
+
 /**
  * BinaryTree.java
  *
@@ -26,17 +28,17 @@ import java.util.Stack;
 
 public class BinaryTree {
 
-    // ─── Node ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Node â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     static class Node {
         int data;
         Node left, right;
         Node(int data) { this.data = data; }
     }
 
-    // ─── Root ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Root â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     private Node root;
 
-    // ─── Insert (level-order, fills left-to-right) ───────────────────────────
+    // â”€â”€â”€ Insert (level-order, fills left-to-right) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Inserts a new node using BFS, filling level by level. O(n). */
     public void insert(int data) {
         Node newNode = new Node(data);
@@ -52,7 +54,7 @@ public class BinaryTree {
         }
     }
 
-    // ─── Traversals (Recursive) ───────────────────────────────────────────────
+    // â”€â”€â”€ Traversals (Recursive) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void inorder()   { System.out.print("Inorder   : "); inRec(root);   System.out.println(); }
     public void preorder()  { System.out.print("Preorder  : "); preRec(root);  System.out.println(); }
     public void postorder() { System.out.print("Postorder : "); postRec(root); System.out.println(); }
@@ -61,7 +63,7 @@ public class BinaryTree {
     private void preRec(Node n)  { if (n == null) return; System.out.print(n.data + " "); preRec(n.left); preRec(n.right); }
     private void postRec(Node n) { if (n == null) return; postRec(n.left); postRec(n.right); System.out.print(n.data + " "); }
 
-    // ─── Inorder (Iterative using Stack) ─────────────────────────────────────
+    // â”€â”€â”€ Inorder (Iterative using Stack) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void inorderIterative() {
         Stack<Node> stack = new Stack<>();
         Node cur = root;
@@ -75,7 +77,7 @@ public class BinaryTree {
         System.out.println();
     }
 
-    // ─── Level-order / BFS ───────────────────────────────────────────────────
+    // â”€â”€â”€ Level-order / BFS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void levelOrder() {
         if (root == null) return;
         Queue<Node> q = new LinkedList<>();
@@ -90,7 +92,7 @@ public class BinaryTree {
         System.out.println();
     }
 
-    // ─── Level-order with levels ──────────────────────────────────────────────
+    // â”€â”€â”€ Level-order with levels â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void levelOrderByLevel() {
         if (root == null) return;
         Queue<Node> q = new LinkedList<>();
@@ -108,7 +110,7 @@ public class BinaryTree {
         }
     }
 
-    // ─── Spiral / Zigzag ─────────────────────────────────────────────────────
+    // â”€â”€â”€ Spiral / Zigzag â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void spiralOrder() {
         if (root == null) return;
         Deque<Node> dq = new ArrayDeque<>();
@@ -134,7 +136,7 @@ public class BinaryTree {
         System.out.println();
     }
 
-    // ─── Height ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Height â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Height = number of edges on longest root-to-leaf path. O(n). */
     public int height() { return heightRec(root); }
     private int heightRec(Node n) {
@@ -142,7 +144,7 @@ public class BinaryTree {
         return 1 + Math.max(heightRec(n.left), heightRec(n.right));
     }
 
-    // ─── Diameter ─────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Diameter â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Diameter = longest path between any two nodes. O(n). */
     private int diameter = 0;
     public int diameter() {
@@ -155,7 +157,7 @@ public class BinaryTree {
         return 1 + Math.max(lh, rh);
     }
 
-    // ─── Node count / Leaf count ──────────────────────────────────────────────
+    // â”€â”€â”€ Node count / Leaf count â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public int countNodes()  { return countRec(root); }
     private int countRec(Node n) { return n == null ? 0 : 1 + countRec(n.left) + countRec(n.right); }
 
@@ -166,7 +168,7 @@ public class BinaryTree {
         return leavesRec(n.left) + leavesRec(n.right);
     }
 
-    // ─── Mirror (Invert) ──────────────────────────────────────────────────────
+    // â”€â”€â”€ Mirror (Invert) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void mirror() { mirrorRec(root); }
     private void mirrorRec(Node n) {
         if (n == null) return;
@@ -174,7 +176,7 @@ public class BinaryTree {
         mirrorRec(n.left); mirrorRec(n.right);
     }
 
-    // ─── Left View ───────────────────────────────────────────────────────────
+    // â”€â”€â”€ Left View â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void leftView() {
         System.out.print("Left View : ");
         leftViewRec(root, 0, new int[]{-1});
@@ -187,7 +189,7 @@ public class BinaryTree {
         leftViewRec(n.right, level + 1, maxLevel);
     }
 
-    // ─── Balanced check ───────────────────────────────────────────────────────
+    // â”€â”€â”€ Balanced check â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Returns true if tree is height-balanced. O(n). */
     public boolean isBalanced() { return balancedHeight(root) != -1; }
     private int balancedHeight(Node n) {
@@ -200,7 +202,7 @@ public class BinaryTree {
         return 1 + Math.max(lh, rh);
     }
 
-    // ─── Main ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
         int[] vals = {1, 2, 3, 4, 5, 6, 7};
@@ -228,3 +230,4 @@ public class BinaryTree {
         tree.inorder();
     }
 }
+

@@ -1,3 +1,5 @@
+﻿package DataStructures.stack;
+
 /**
  * StackLinkedList.java
  *
@@ -16,18 +18,18 @@
  */
 public class StackLinkedList<T> {
 
-    // ─── Node ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Node â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     private static class Node<T> {
         T data;
         Node<T> next;
         Node(T data) { this.data = data; }
     }
 
-    // ─── Fields ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Fields â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     private Node<T> top;
     private int size;
 
-    // ─── Core Operations ─────────────────────────────────────────────────────
+    // â”€â”€â”€ Core Operations â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Push element. O(1). */
     public void push(T item) {
         Node<T> node = new Node<>(item);
@@ -65,7 +67,7 @@ public class StackLinkedList<T> {
         System.out.println("]");
     }
 
-    // ─── Application: Sort a stack using an auxiliary stack ──────────────────
+    // â”€â”€â”€ Application: Sort a stack using an auxiliary stack â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /**
      * Sorts a stack so the smallest element is on top.
      * Uses only stack operations (no array/list).
@@ -82,7 +84,7 @@ public class StackLinkedList<T> {
         return sorted;
     }
 
-    // ─── Application: Reverse a stack using recursion ────────────────────────
+    // â”€â”€â”€ Application: Reverse a stack using recursion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Inserts element at bottom of stack. O(n) */
     private static <T> void insertAtBottom(StackLinkedList<T> stack, T item) {
         if (stack.isEmpty()) { stack.push(item); return; }
@@ -99,7 +101,7 @@ public class StackLinkedList<T> {
         insertAtBottom(stack, top);
     }
 
-    // ─── Main ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public static void main(String[] args) {
         StackLinkedList<Integer> stack = new StackLinkedList<>();
         int[] vals = {5, 1, 4, 2, 3};
@@ -118,3 +120,4 @@ public class StackLinkedList<T> {
         System.out.print("Reversed: "); strStack.print();
     }
 }
+

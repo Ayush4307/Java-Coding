@@ -1,3 +1,5 @@
+﻿package DataStructures.trees;
+
 /**
  * BinarySearchTree.java
  *
@@ -21,17 +23,17 @@
  */
 public class BinarySearchTree {
 
-    // ─── Node ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Node â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     static class Node {
         int data;
         Node left, right;
         Node(int data) { this.data = data; }
     }
 
-    // ─── Root ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Root â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     private Node root;
 
-    // ─── Insert ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Insert â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void insert(int data) { root = insertRec(root, data); }
 
     private Node insertRec(Node node, int data) {
@@ -42,7 +44,7 @@ public class BinarySearchTree {
         return node;
     }
 
-    // ─── Search ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Search â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public boolean search(int data) { return searchRec(root, data); }
 
     private boolean searchRec(Node node, int data) {
@@ -51,12 +53,12 @@ public class BinarySearchTree {
         return data < node.data ? searchRec(node.left, data) : searchRec(node.right, data);
     }
 
-    // ─── Delete ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Delete â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /**
      * Three cases:
-     *  1. Leaf   → just remove
-     *  2. One child → replace with child
-     *  3. Two children → replace with inorder successor (min of right subtree)
+     *  1. Leaf   â†’ just remove
+     *  2. One child â†’ replace with child
+     *  3. Two children â†’ replace with inorder successor (min of right subtree)
      */
     public void delete(int data) { root = deleteRec(root, data); }
 
@@ -74,7 +76,7 @@ public class BinarySearchTree {
         return node;
     }
 
-    // ─── Min / Max ────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Min / Max â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public int min() {
         if (root == null) throw new java.util.NoSuchElementException();
         return minNode(root).data;
@@ -88,7 +90,7 @@ public class BinarySearchTree {
         return n.data;
     }
 
-    // ─── Inorder Successor & Predecessor ─────────────────────────────────────
+    // â”€â”€â”€ Inorder Successor & Predecessor â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public Integer successor(int data) {
         Node suc = null, cur = root;
         while (cur != null) {
@@ -109,8 +111,8 @@ public class BinarySearchTree {
         return pred == null ? null : pred.data;
     }
 
-    // ─── Floor / Ceiling ──────────────────────────────────────────────────────
-    /** Largest value ≤ key */
+    // â”€â”€â”€ Floor / Ceiling â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    /** Largest value â‰¤ key */
     public Integer floor(int key) {
         Node res = null, cur = root;
         while (cur != null) {
@@ -121,7 +123,7 @@ public class BinarySearchTree {
         return res == null ? null : res.data;
     }
 
-    /** Smallest value ≥ key */
+    /** Smallest value â‰¥ key */
     public Integer ceiling(int key) {
         Node res = null, cur = root;
         while (cur != null) {
@@ -132,18 +134,18 @@ public class BinarySearchTree {
         return res == null ? null : res.data;
     }
 
-    // ─── Height ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Height â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public int height() { return heightRec(root); }
     private int heightRec(Node n) {
         if (n == null) return -1;
         return 1 + Math.max(heightRec(n.left), heightRec(n.right));
     }
 
-    // ─── Count ────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Count â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public int count() { return countRec(root); }
     private int countRec(Node n) { return n == null ? 0 : 1 + countRec(n.left) + countRec(n.right); }
 
-    // ─── Validate BST ─────────────────────────────────────────────────────────
+    // â”€â”€â”€ Validate BST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public boolean isValidBST() { return validateRec(root, Integer.MIN_VALUE, Integer.MAX_VALUE); }
     private boolean validateRec(Node n, int min, int max) {
         if (n == null) return true;
@@ -151,7 +153,7 @@ public class BinarySearchTree {
         return validateRec(n.left, min, n.data) && validateRec(n.right, n.data, max);
     }
 
-    // ─── LCA (Lowest Common Ancestor) ─────────────────────────────────────────
+    // â”€â”€â”€ LCA (Lowest Common Ancestor) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public Integer lca(int a, int b) {
         Node res = lcaRec(root, a, b);
         return res == null ? null : res.data;
@@ -163,7 +165,7 @@ public class BinarySearchTree {
         return n;
     }
 
-    // ─── Sorted Array → Balanced BST ─────────────────────────────────────────
+    // â”€â”€â”€ Sorted Array â†’ Balanced BST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void buildFromSortedArray(int[] arr) { root = buildRec(arr, 0, arr.length - 1); }
     private Node buildRec(int[] arr, int lo, int hi) {
         if (lo > hi) return null;
@@ -174,7 +176,7 @@ public class BinarySearchTree {
         return n;
     }
 
-    // ─── Traversals ───────────────────────────────────────────────────────────
+    // â”€â”€â”€ Traversals â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void inorder()   { System.out.print("Inorder  : "); inRec(root);   System.out.println(); }
     public void preorder()  { System.out.print("Preorder : "); preRec(root);  System.out.println(); }
     public void postorder() { System.out.print("Postorder: "); postRec(root); System.out.println(); }
@@ -183,7 +185,7 @@ public class BinarySearchTree {
     private void preRec(Node n)  { if (n != null) { System.out.print(n.data + " "); preRec(n.left); preRec(n.right); } }
     private void postRec(Node n) { if (n != null) { postRec(n.left); postRec(n.right); System.out.print(n.data + " "); } }
 
-    // ─── Main ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
         int[] vals = {50, 30, 70, 20, 40, 60, 80};
@@ -210,10 +212,11 @@ public class BinarySearchTree {
         bst.delete(30);
         bst.inorder();
 
-        System.out.println("\n-- Sorted Array → BST --");
+        System.out.println("\n-- Sorted Array â†’ BST --");
         BinarySearchTree bst2 = new BinarySearchTree();
         bst2.buildFromSortedArray(new int[]{1,2,3,4,5,6,7});
         bst2.inorder();
         System.out.println("Balanced? " + bst2.isValidBST());
     }
 }
+

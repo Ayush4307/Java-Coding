@@ -1,3 +1,5 @@
+﻿package DataStructures.graph;
+
 /**
  * Graph.java
  *
@@ -36,7 +38,7 @@ import java.util.Set;
 
 public class Graph {
 
-    // ─── Fields ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Fields â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     private final Map<Integer, List<Integer>> adjList;
     private final boolean directed;
 
@@ -45,25 +47,25 @@ public class Graph {
         adjList = new HashMap<>();
     }
 
-    // ─── Add Vertex ───────────────────────────────────────────────────────────
+    // â”€â”€â”€ Add Vertex â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void addVertex(int v) {
         adjList.putIfAbsent(v, new ArrayList<>());
     }
 
-    // ─── Add Edge ─────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Add Edge â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void addEdge(int u, int v) {
         addVertex(u); addVertex(v);
         adjList.get(u).add(v);
         if (!directed) adjList.get(v).add(u);
     }
 
-    // ─── Remove Edge ─────────────────────────────────────────────────────────
+    // â”€â”€â”€ Remove Edge â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void removeEdge(int u, int v) {
         if (adjList.containsKey(u)) adjList.get(u).remove(Integer.valueOf(v));
         if (!directed && adjList.containsKey(v)) adjList.get(v).remove(Integer.valueOf(u));
     }
 
-    // ─── BFS ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ BFS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** BFS from source. Returns nodes in visit order. O(V + E). */
     public List<Integer> bfs(int source) {
         List<Integer> visited  = new ArrayList<>();
@@ -82,7 +84,7 @@ public class Graph {
         return visited;
     }
 
-    // ─── DFS (Recursive) ─────────────────────────────────────────────────────
+    // â”€â”€â”€ DFS (Recursive) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** DFS from source. O(V + E). */
     public List<Integer> dfs(int source) {
         List<Integer> visited = new ArrayList<>();
@@ -100,7 +102,7 @@ public class Graph {
         }
     }
 
-    // ─── DFS (Iterative) ─────────────────────────────────────────────────────
+    // â”€â”€â”€ DFS (Iterative) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public List<Integer> dfsIterative(int source) {
         List<Integer> visited = new ArrayList<>();
         Set<Integer> seen = new HashSet<>();
@@ -116,7 +118,7 @@ public class Graph {
         }
         return visited;
     }
-    // ─── Connected Components ────────────────────────────────────────────────
+    // â”€â”€â”€ Connected Components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public int connectedComponents() {
         Set<Integer> seen = new HashSet<>();
         int count = 0;
@@ -126,7 +128,7 @@ public class Graph {
         return count;
     }
 
-    // ─── Cycle Detection (Undirected, Union-Find) ─────────────────────────────
+    // â”€â”€â”€ Cycle Detection (Undirected, Union-Find) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public boolean hasCycleUndirected() {
         Map<Integer, Integer> parent = new HashMap<>();
         for (int v : adjList.keySet()) parent.put(v, v);
@@ -149,7 +151,7 @@ public class Graph {
         return x;
     }
 
-    // ─── Topological Sort (DFS, directed acyclic graph) ──────────────────────
+    // â”€â”€â”€ Topological Sort (DFS, directed acyclic graph) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public List<Integer> topologicalSort() {
         if (!directed) throw new IllegalStateException("Topological sort requires a directed graph");
         Deque<Integer> stack = new ArrayDeque<>();
@@ -168,7 +170,7 @@ public class Graph {
         stack.push(v);
     }
 
-    // ─── Shortest Path (Unweighted BFS) ──────────────────────────────────────
+    // â”€â”€â”€ Shortest Path (Unweighted BFS) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /**
      * Returns shortest path distance from source to target.
      * Returns -1 if no path exists.
@@ -191,7 +193,7 @@ public class Graph {
         return -1;
     }
 
-    // ─── Print ────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Print â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public void printGraph() {
         System.out.println("Adjacency List (" + (directed ? "directed" : "undirected") + "):");
         List<Integer> vertices = new ArrayList<>(adjList.keySet());
@@ -203,7 +205,7 @@ public class Graph {
         }
     }
 
-    // ─── Main ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public static void main(String[] args) {
         System.out.println("=== Undirected Graph ===");
         Graph g = new Graph(false);
@@ -217,7 +219,7 @@ public class Graph {
         System.out.println("DFS iter 0  : " + g.dfsIterative(0));
         System.out.println("Components  : " + g.connectedComponents());
         System.out.println("Has cycle?  : " + g.hasCycleUndirected());
-        System.out.println("Shortest 0→5: " + g.shortestPath(0, 5));
+        System.out.println("Shortest 0â†’5: " + g.shortestPath(0, 5));
 
         System.out.println("\n=== Directed Graph (DAG) ===");
         Graph dag = new Graph(true);
@@ -228,3 +230,4 @@ public class Graph {
         System.out.println("Topo sort: " + dag.topologicalSort());
     }
 }
+

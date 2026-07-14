@@ -1,3 +1,5 @@
+﻿package DataStructures.linkedlist;
+
 /**
  * SinglyLinkedList.java
  *
@@ -24,18 +26,18 @@
  */
 public class SinglyLinkedList<T> {
 
-    // ─── Node ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Node â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     private static class Node<T> {
         T data;
         Node<T> next;
         Node(T data) { this.data = data; }
     }
 
-    // ─── Fields ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Fields â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     private Node<T> head;
     private int size;
 
-    // ─── Add ──────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Add â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** O(1) */
     public void addFirst(T data) {
         Node<T> node = new Node<>(data);
@@ -65,7 +67,7 @@ public class SinglyLinkedList<T> {
         size++;
     }
 
-    // ─── Remove ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Remove â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** O(1) */
     public T removeFirst() {
         if (head == null) throw new java.util.NoSuchElementException();
@@ -106,7 +108,7 @@ public class SinglyLinkedList<T> {
         return true;
     }
 
-    // ─── Access ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Access â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public T get(int index) { return getNode(index).data; }
 
     private Node<T> getNode(int index) {
@@ -116,7 +118,7 @@ public class SinglyLinkedList<T> {
         return cur;
     }
 
-    // ─── Search ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Search â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public int indexOf(T data) {
         Node<T> cur = head; int i = 0;
         while (cur != null) {
@@ -128,7 +130,7 @@ public class SinglyLinkedList<T> {
 
     public boolean contains(T data) { return indexOf(data) != -1; }
 
-    // ─── Reverse (Iterative) ──────────────────────────────────────────────────
+    // â”€â”€â”€ Reverse (Iterative) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Reverses list in-place. O(n) time, O(1) space. */
     public void reverse() {
         Node<T> prev = null, cur = head, next;
@@ -141,7 +143,7 @@ public class SinglyLinkedList<T> {
         head = prev;
     }
 
-    // ─── Reverse (Recursive) ─────────────────────────────────────────────────
+    // â”€â”€â”€ Reverse (Recursive) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** O(n) time, O(n) stack space. */
     public void reverseRecursive() { head = reverseRec(head); }
 
@@ -153,7 +155,7 @@ public class SinglyLinkedList<T> {
         return newHead;
     }
 
-    // ─── Find Middle (Slow-Fast Pointer) ─────────────────────────────────────
+    // â”€â”€â”€ Find Middle (Slow-Fast Pointer) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Returns middle element. For even-length, returns second middle. O(n). */
     public T findMiddle() {
         if (head == null) throw new java.util.NoSuchElementException();
@@ -165,7 +167,7 @@ public class SinglyLinkedList<T> {
         return slow.data;
     }
 
-    // ─── Detect Cycle (Floyd's) ───────────────────────────────────────────────
+    // â”€â”€â”€ Detect Cycle (Floyd's) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Returns true if list has a cycle. O(n) time, O(1) space. */
     public boolean detectCycle() {
         Node<T> slow = head, fast = head;
@@ -177,7 +179,7 @@ public class SinglyLinkedList<T> {
         return false;
     }
 
-    // ─── Utilities ───────────────────────────────────────────────────────────
+    // â”€â”€â”€ Utilities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public int size()        { return size; }
     public boolean isEmpty() { return size == 0; }
 
@@ -188,7 +190,7 @@ public class SinglyLinkedList<T> {
         System.out.println("NULL");
     }
 
-    // ─── Main ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public static void main(String[] args) {
         SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
 
@@ -217,3 +219,4 @@ public class SinglyLinkedList<T> {
         System.out.print("After addAt(1, 999): "); list.print();
     }
 }
+

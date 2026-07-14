@@ -1,3 +1,5 @@
+﻿package DataStructures.arrays;
+
 /**
  * ArrayOperations.java
  *
@@ -17,7 +19,7 @@
  */
 public class ArrayOperations {
 
-    // ─── Insert at given index ────────────────────────────────────────────────
+    // â”€â”€â”€ Insert at given index â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /**
      * Inserts 'value' at 'index' in arr[0..n-1].
      * arr must have at least n+1 capacity.
@@ -32,7 +34,7 @@ public class ArrayOperations {
         return n + 1;
     }
 
-    // ─── Delete at given index ────────────────────────────────────────────────
+    // â”€â”€â”€ Delete at given index â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /**
      * Deletes element at 'index' from arr[0..n-1].
      * @return new logical size (n - 1)
@@ -45,7 +47,7 @@ public class ArrayOperations {
         return n - 1;
     }
 
-    // ─── Linear Search ────────────────────────────────────────────────────────
+    // â”€â”€â”€ Linear Search â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Returns index of 'target' or -1 if not found. O(n) */
     public static int linearSearch(int[] arr, int n, int target) {
         for (int i = 0; i < n; i++) {
@@ -54,7 +56,7 @@ public class ArrayOperations {
         return -1;
     }
 
-    // ─── Binary Search (sorted array) ────────────────────────────────────────
+    // â”€â”€â”€ Binary Search (sorted array) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Returns index of 'target' or -1. Requires sorted array. O(log n) */
     public static int binarySearch(int[] arr, int n, int target) {
         int lo = 0, hi = n - 1;
@@ -67,7 +69,7 @@ public class ArrayOperations {
         return -1;
     }
 
-    // ─── Reverse ──────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Reverse â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Reverses arr[0..n-1] in-place. O(n) */
     public static void reverse(int[] arr, int n) {
         int lo = 0, hi = n - 1;
@@ -77,7 +79,7 @@ public class ArrayOperations {
         }
     }
 
-    // ─── Left Rotation by k positions ────────────────────────────────────────
+    // â”€â”€â”€ Left Rotation by k positions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Rotates arr left by k positions. O(n) */
     public static void rotateLeft(int[] arr, int n, int k) {
         k = k % n;
@@ -105,7 +107,7 @@ public class ArrayOperations {
         }
     }
 
-    // ─── Max & Min ────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Max & Min â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public static int max(int[] arr, int n) {
         int m = arr[0];
         for (int i = 1; i < n; i++) if (arr[i] > m) m = arr[i];
@@ -118,7 +120,7 @@ public class ArrayOperations {
         return m;
     }
 
-    // ─── Second Largest ───────────────────────────────────────────────────────
+    // â”€â”€â”€ Second Largest â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     /** Returns second largest element. O(n) */
     public static int secondLargest(int[] arr, int n) {
         int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE;
@@ -129,14 +131,14 @@ public class ArrayOperations {
         return second;
     }
 
-    // ─── Sum ──────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Sum â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public static long sum(int[] arr, int n) {
         long s = 0;
         for (int i = 0; i < n; i++) s += arr[i];
         return s;
     }
 
-    // ─── Print ───────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Print â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public static void print(int[] arr, int n) {
         System.out.print("[");
         for (int i = 0; i < n; i++) {
@@ -146,7 +148,7 @@ public class ArrayOperations {
         System.out.println("]");
     }
 
-    // ─── Main ─────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     public static void main(String[] args) {
         int[] arr = new int[15];
         int n = 0;
@@ -182,3 +184,4 @@ public class ArrayOperations {
         System.out.println("Binary search 40 at index: " + binarySearch(arr, n, 40));
     }
 }
+
