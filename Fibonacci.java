@@ -40,7 +40,7 @@ public class Fibonacci {
      * @return F(n), or -1 if n is negative
      */
     public static int fibRecursive(int n) {
-        if (n < 0) return -1;
+        if (n < 0) throw new IllegalArgumentException("Fibonacci sequence is not defined for negative integers.");
         // Base cases
         if (n <= 1) return n;
         // Two recursive calls — each spawns two more: exponential growth!
@@ -65,7 +65,7 @@ public class Fibonacci {
      * @return F(n), or -1 if n is negative
      */
     public static int fibDP(int n) {
-        if (n < 0) return -1;
+        if (n < 0) throw new IllegalArgumentException("Fibonacci sequence is not defined for negative integers.");
         if (n <= 1) return n;
         int[] dp = new int[n + 1];
         dp[0] = 0;
@@ -94,7 +94,7 @@ public class Fibonacci {
      * @return F(n), or -1 if n is negative
      */
     public static int fibOptimized(int n) {
-        if (n < 0) return -1;
+        if (n < 0) throw new IllegalArgumentException("Fibonacci sequence is not defined for negative integers.");
         if (n <= 1) return n;
         int prev = 0, curr = 1;
         // Roll the two variables forward — O(n)
@@ -124,7 +124,7 @@ public class Fibonacci {
      * @return F(n), or -1 if n is negative
      */
     public static int fibRecursiveMemoized(int n) {
-        if (n < 0) return -1;
+        if (n < 0) throw new IllegalArgumentException("Fibonacci sequence is not defined for negative integers.");
         int[] memo = new int[n + 1];
         java.util.Arrays.fill(memo, -1); // Sentinel: -1 means "not computed yet"
         return fibMemoHelper(n, memo);
@@ -163,7 +163,7 @@ public class Fibonacci {
      * @return F(n), or -1 if n is negative
      */
     public static int fibFastDoubling(int n) {
-        if (n < 0) return -1;
+        if (n < 0) throw new IllegalArgumentException("Fibonacci sequence is not defined for negative integers.");
         return fastDoublingHelper(n)[0];
     }
 
