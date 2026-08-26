@@ -21,6 +21,8 @@
  *  - IP routing (longest prefix matching)
  *  - Word games (Scrabble, Boggle)
  */
+package DataStructures.trie;
+
 import java.util.*;
 
 public class Trie {

@@ -18,6 +18,8 @@
  *  - Undo-redo at both ends
  *  - Work-stealing scheduling
  */
+package DataStructures.queue;
+
 public class Deque<T> {
 
     // ─── Node ─────────────────────────────────────────────────────────────────

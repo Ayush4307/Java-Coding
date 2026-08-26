@@ -14,6 +14,8 @@
  *
  * Space Complexity: O(n)
  */
+package DataStructures.stack;
+
 public class StackLinkedList<T> {
 
     // ─── Node ─────────────────────────────────────────────────────────────────

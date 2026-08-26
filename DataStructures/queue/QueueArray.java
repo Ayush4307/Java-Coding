@@ -23,6 +23,8 @@
  *  - Print spooler
  *  - Asynchronous data transfer (network packets)
  */
+package DataStructures.queue;
+
 public class QueueArray<T> {
 
     private final Object[] data;

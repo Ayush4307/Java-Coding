@@ -19,6 +19,8 @@
  *
  * Space Complexity: O(n)
  */
+package DataStructures.trees;
+
 public class BinarySearchTree {
 
     // ─── Node ─────────────────────────────────────────────────────────────────

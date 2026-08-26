@@ -15,6 +15,8 @@
  *
  * Space Complexity  : O(n)
  */
+package DataStructures.arrays;
+
 public class ArrayOperations {
 
     // ─── Insert at given index ────────────────────────────────────────────────

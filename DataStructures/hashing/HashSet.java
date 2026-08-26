@@ -19,6 +19,8 @@
  *
  * Space Complexity: O(n)
  */
+package DataStructures.hashing;
+
 public class HashSet<K> {
 
     // ─── Sentinel for deleted slots ───────────────────────────────────────────

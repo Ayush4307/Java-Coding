@@ -23,7 +23,7 @@ import java.util.List;
  * Time Complexity  : O(n) — two linear passes over the array.
  * Space Complexity : O(1) — only scalar variables used (leftSum, totalSum).
  */
-public class EqulibriumIndex {
+public class EquilibriumIndex {
 
     /**
      * Finds the first equilibrium index in the array.

@@ -23,6 +23,8 @@
  *  - Circular buffers
  *  - Josephus problem
  */
+package DataStructures.linkedlist;
+
 public class CircularLinkedList<T> {
 
     // ─── Node ─────────────────────────────────────────────────────────────────

@@ -17,6 +17,8 @@
  *
  * Space Complexity: O(n)
  */
+package DataStructures.linkedlist;
+
 public class DoublyLinkedList<T> {
 
     // ─── Node ─────────────────────────────────────────────────────────────────

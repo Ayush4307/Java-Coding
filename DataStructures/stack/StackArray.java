@@ -20,6 +20,8 @@
  *  - Balanced parentheses checking
  *  - Browser back-button history
  */
+package DataStructures.stack;
+
 public class StackArray<T> {
 
     private final Object[] data;

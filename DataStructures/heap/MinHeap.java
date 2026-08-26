@@ -26,6 +26,8 @@
  *  - K-th smallest / largest element
  *  - Merge K sorted arrays
  */
+package DataStructures.heap;
+
 public class MinHeap {
 
     private int[] heap;

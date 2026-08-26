@@ -19,6 +19,8 @@
  *
  * Space Complexity: O(n + m) where m = number of buckets
  */
+package DataStructures.hashing;
+
 @SuppressWarnings("unchecked")
 public class HashMap<K, V> {
 

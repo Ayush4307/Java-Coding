@@ -17,6 +17,8 @@
  *
  * Space Complexity: O(n)
  */
+package DataStructures.arrays;
+
 @SuppressWarnings("unchecked")
 public class DynamicArray<T> {
 
