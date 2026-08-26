@@ -1,8 +1,9 @@
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class ValidParentheses {
     public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> stack = new ArrayDeque<>();
         for (char c : s.toCharArray()) {
             if (c == '(') {
                 stack.push(')');
