@@ -78,14 +78,15 @@ public class ReverseLinkedList {
         // Base case: empty list or single node — already reversed
         if (head == null || head.next == null) return head;
 
-        Node newHead = null; // Will become the new head (prev pointer)
-        while (head != null) {
-            Node temp = head;       // Save current node
-            head = head.next;       // Advance original head forward
-            temp.next = newHead;    // Reverse the pointer
-            newHead = temp;         // Move new head forward
+        Node previous = null;
+        Node current = head;
+        while (current != null) {
+            Node next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
         }
-        return newHead;
+        return previous;
     }
 
     /**
