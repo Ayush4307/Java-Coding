@@ -82,11 +82,8 @@ public class ArrayOperations {
     // ─── Left Rotation by k positions ────────────────────────────────────────
     /** Rotates arr left by k positions. O(n) */
     public static void rotateLeft(int[] arr, int n, int k) {
+        if (n == 0) return;
         k = k % n;
-        reverse(arr, k);
-        reverse(arr, n);         // reverse whole
-        // Correct: reverse first k, reverse rest, reverse all
-        // Using three-reversal trick:
         reverseRange(arr, 0, k - 1);
         reverseRange(arr, k, n - 1);
         reverseRange(arr, 0, n - 1);
