@@ -3,6 +3,7 @@ import java.util.Deque;
 
 public class ValidParentheses {
     public boolean isValid(String s) {
+        if (s == null) return false;
         Deque<Character> stack = new ArrayDeque<>();
         for (char c : s.toCharArray()) {
             if (c == '(') {
