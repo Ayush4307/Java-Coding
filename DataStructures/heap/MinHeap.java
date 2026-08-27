@@ -93,6 +93,7 @@ public class MinHeap {
     // ─── Decrease Key ────────────────────────────────────────────────────────
     /** Reduces heap[index] to newKey, then sifts up. O(log n). */
     public void decreaseKey(int index, int newKey) {
+        checkIndex(index);
         if (newKey > heap[index]) throw new IllegalArgumentException("New key is greater");
         heap[index] = newKey;
         while (index > 0 && heap[parent(index)] > heap[index]) {
@@ -158,6 +159,12 @@ public class MinHeap {
     // ─── Utilities ───────────────────────────────────────────────────────────
     public int size()        { return size; }
     public boolean isEmpty() { return size == 0; }
+
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+    }
 
     public void print() {
         System.out.print("Heap: [");
