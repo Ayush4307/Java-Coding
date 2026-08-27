@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class MergeSort {
     public static void sort(int[] array) {
+        if (array == null || array.length < 2) return;
         mergeSort(array, 0, array.length - 1);
     }
 
