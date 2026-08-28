@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * EqulibriumIndex.java
+ * EquilibriumIndex.java
  *
  * Problem: Find the equilibrium index of an array.
  * An equilibrium index is one where the sum of elements to its left equals
@@ -42,13 +42,13 @@ public class EquilibriumIndex {
         if (arr == null || arr.length == 0) return -1;
 
         // Step 1: Compute total sum — O(n)
-        int totalSum = 0;
+        long totalSum = 0;
         for (int x : arr) {
             totalSum += x;
         }
 
         // Step 2: Scan array; at each i, rightSum = totalSum - arr[i] - leftSum
-        int leftSum = 0;
+        long leftSum = 0;
         for (int i = 0; i < arr.length; i++) {
             // Subtract current element to isolate the right portion
             totalSum -= arr[i];
@@ -91,13 +91,13 @@ public class EquilibriumIndex {
         if (arr == null || arr.length == 0) return result;
 
         // Step 1: Compute full total sum — O(n)
-        int totalSum = 0;
+        long totalSum = 0;
         for (int x : arr) {
             totalSum += x;
         }
 
         // Step 2: Scan and collect ALL equilibrium positions
-        int leftSum = 0;
+        long leftSum = 0;
         for (int i = 0; i < arr.length; i++) {
             totalSum -= arr[i]; // rightSum = totalSum after removing arr[i]
 
