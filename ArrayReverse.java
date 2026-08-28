@@ -1,4 +1,5 @@
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * ArrayReverse.java
@@ -106,7 +107,7 @@ public class ArrayReverse {
     public static void reverseUsingStack(int[] arr) {
         if (arr == null || arr.length <= 1) return;
 
-        Stack<Integer> stack = new Stack<>();
+        Deque<Integer> stack = new ArrayDeque<>();
 
         // Push all elements — O(n) time, O(n) space
         for (int val : arr) {
