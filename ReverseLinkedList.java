@@ -118,10 +118,10 @@ public class ReverseLinkedList {
      * @param head the head node of the list to print
      */
     static void print(Node head) {
-        Node t = head;
-        while (t != null) {
-            System.out.print(t.data + " ");
-            t = t.next;
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
         }
         System.out.println();
     }
@@ -196,7 +196,10 @@ public class ReverseLinkedList {
      * @return the new head of the list after group reversal
      */
     static Node reverseInGroups(Node head, int k) {
-        if (head == null || k <= 1) return head;
+        if (k <= 0) {
+            throw new IllegalArgumentException("Group size must be positive.");
+        }
+        if (head == null || k == 1) return head;
 
         Node curr = head;
         Node prev = null;
